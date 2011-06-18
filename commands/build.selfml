@@ -1,0 +1,14 @@
+(trigger
+    (key [[cmd]B]))
+
+(name Build)
+
+(only-in [source.c++.qt, source.qmake])
+
+(input nothing)
+
+(output html)
+
+(save nothing)
+
+(script ["${TM_BUNDLE_SUPPORT}/bin/build_qt_project.rb"])

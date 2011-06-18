@@ -1,0 +1,8 @@
+(name [QTimer::singleShot(...)])
+
+(trigger
+    (tab singleShot))
+
+(only-in source.c++.qt)
+
+(snippet [QTimer::singleShot(%{1="0"}, %{2="this"}, SLOT(%{3="slotName()"}))])

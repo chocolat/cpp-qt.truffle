@@ -1,0 +1,9 @@
+(name [Block Comment Newline])
+
+(trigger
+    (key [[enter]]))
+
+(only-in [source.c++.qt comment.block.c])
+
+(snippet [
+* ])

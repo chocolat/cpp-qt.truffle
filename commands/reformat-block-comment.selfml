@@ -1,0 +1,23 @@
+(trigger
+    (key [[ctrl]Q]))
+
+(name [Reformat Block Comment])
+
+(only-in [source.c++.qt comment.block.c])
+
+(input selection scope)
+
+(output snippet)
+
+(save nothing)
+
+(script [#!/usr/bin/env ruby
+# By Allan Odgaard: 
+# http://macromates.com/blog/archives/2006/04/12/customization-screencast/
+
+txt = STDIN.read.gsub(%r{\A/|\*/\z}, '')
+txt = txt.gsub(/^[ \t]*\*[ \t]*/, '')
+txt = %x{ fmt <<< '#{txt.gsub(/'/, "'\\\\''")}' }.chomp
+txt = txt.gsub(/[$`\\]/, '\\\\\0')
+txt = txt.sub(/(\n(?=\n))?(\n*)\z/, '\1$0\2')
+print "/* " + txt.to_a.join(' * ') + " */"])

@@ -1,0 +1,18 @@
+(detector
+    (extension pro)
+    (extension pri))
+
+(shell-variables
+    (TM_COMMENT_START [# ]))
+
+(comment.line [# ])
+
+(pair "
+    "
+    (smart-typing))
+
+(in source.c++.qt)
+
+(in source.c++.qt
+    (indentation.decrease [^(.*\*/)?\s*\}([^}{"']*\{)?[;\s]*$|^\s*((public|private|protected)(\s+slots)?|signals):\s*$])
+    (indentation.increase [^.*\{[^}"']*$|^\s*((public|private|protected)(\s+slots)?|signals):\s*$]))

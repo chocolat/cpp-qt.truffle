@@ -1,0 +1,23 @@
+(menu command.run-application
+    command.build
+    command.build-&-run
+    ---
+    command.add-file
+    ---
+    (submenu Snippets
+        snippet.connect
+        snippet.disconnect
+        snippet.foreach
+        snippet.q_property
+        ---
+        [snippet.qwarning-(warn)]
+        [snippet.tolatin1().data()-(latin)]
+        ---
+        snippet.qmake-project-template-stub
+        [snippet.main-(qmain)]
+        command.class-declaration
+        command.class-declaration-with-doxygen
+        (submenu Misc snippet.qdebug [snippet.qsort(___)] [snippet.toutf8()_data()] [snippet.qtimer-singleshot(___)]))
+    (submenu Insert command.insert-call-to-super --- command.declaration-to-implementation [command.declaration-to-implementation-(with-doxygen)] command.implementation-to-declaration)
+    (submenu Documentation command.qmake-manual --- command.documentation-for-word-selection command.display-documentation [command.documentation-for-word-selection-(fuzzy)] command.display-fuzzy-documentation)
+    (submenu Comments snippet.block-comment snippet.block-comment-newline --- command.reformat-block-comment))

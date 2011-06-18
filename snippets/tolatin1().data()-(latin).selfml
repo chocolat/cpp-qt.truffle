@@ -1,0 +1,8 @@
+(name [toLatin1().data()])
+
+(trigger
+    (tab latin))
+
+(only-in source.c++.qt)
+
+(snippet [toLatin1().data()])

@@ -1,0 +1,8 @@
+(name disconnect)
+
+(trigger
+    (tab dis))
+
+(only-in source.c++.qt)
+
+(snippet [disconnect( %{1="sender"}, SIGNAL(%{2="signal"}(%{3})), %{4="reciever"}, %{5="SLOT"}(%{6="slot"}(%{3})) );%{0}])

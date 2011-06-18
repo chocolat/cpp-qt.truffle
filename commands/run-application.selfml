@@ -1,0 +1,14 @@
+(trigger
+    (key [[cmd]R]))
+
+(name Run)
+
+(only-in [source.c++.qt, source.qmake])
+
+(input nothing)
+
+(output tooltip)
+
+(save nothing)
+
+(script ["${TM_BUNDLE_SUPPORT}/bin/run_qt_project.rb"])

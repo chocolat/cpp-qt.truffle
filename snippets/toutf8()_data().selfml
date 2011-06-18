@@ -1,0 +1,8 @@
+(name [toUtf8().data()])
+
+(trigger
+    (tab utf8))
+
+(only-in source.c++.qt)
+
+(snippet [toUtf8().data()])

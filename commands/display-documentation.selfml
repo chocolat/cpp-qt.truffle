@@ -1,0 +1,14 @@
+(trigger
+    (key [[ctrl][cmd]H]))
+
+(name [Display Documentation])
+
+(only-in source.c++.qt)
+
+(input selection word)
+
+(output html)
+
+(save nothing)
+
+(script [ruby "$TM_BUNDLE_SUPPORT/bin/search.rb" input])

@@ -1,0 +1,8 @@
+(name qDebug)
+
+(trigger
+    (tab debug))
+
+(only-in source.c++.qt)
+
+(snippet [qDebug() << %{1};])

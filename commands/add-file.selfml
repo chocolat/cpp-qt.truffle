@@ -1,0 +1,14 @@
+(trigger
+    (key [[cmd]U]))
+
+(name [Add File])
+
+(only-in source.qmake)
+
+(input selection word)
+
+(output replace-selected)
+
+(save nothing)
+
+(script [ruby "$TM_BUNDLE_SUPPORT/bin/add_file.rb"])

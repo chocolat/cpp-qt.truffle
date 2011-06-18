@@ -1,0 +1,14 @@
+(trigger
+    (key [[ctrl]H]))
+
+(name [Show qmake Manual])
+
+(only-in source.qmake)
+
+(input nothing)
+
+(output html)
+
+(save nothing)
+
+(script [echo "<meta http-equiv='Refresh' content='0;URL=tm-file://${TM_QT_DOC_DIR:=/usr/local/Trolltech/Qt-4.2.0/doc/html}/qmake-manual.html'>"])

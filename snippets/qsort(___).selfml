@@ -1,0 +1,8 @@
+(name [qSort(...)])
+
+(trigger
+    (tab qSort))
+
+(only-in source.c++.qt)
+
+(snippet [qSort(%{1="list"}.begin(), %{1}.end())])

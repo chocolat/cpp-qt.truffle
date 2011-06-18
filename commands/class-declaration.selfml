@@ -1,0 +1,14 @@
+(trigger
+    (tab qclass))
+
+(name Class)
+
+(only-in source.c++.qt)
+
+(input nothing)
+
+(output snippet)
+
+(save nothing)
+
+(script [ruby "$TM_BUNDLE_SUPPORT/bin/insert_class.rb"])

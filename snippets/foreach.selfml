@@ -1,0 +1,11 @@
+(name foreach)
+
+(trigger
+    (tab fe))
+
+(only-in source.c++.qt)
+
+(snippet [foreach( %{1="variable"}, %{2="container"} )
+{
+	%{3="doSomething();"} 
+}%{0}])

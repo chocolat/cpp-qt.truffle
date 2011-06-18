@@ -1,0 +1,109 @@
+(root source.qmake
+    (zone markup.other.template.qmake
+        (start
+            (regex [(TEMPLATE)\s*(=)]
+                (1 variable.language.qmake)
+                (2 punctuation.separator.key-value.qmake)))
+        (end
+            (regex $\n?
+                (1 variable.language.qmake)
+                (2 punctuation.separator.key-value.qmake)))
+        (subzones
+            (zone keyword.other.qmake
+                (match
+                    (list app lib subdirs vcapp vclib)
+                    (boundary.both)))))
+    (zone markup.other.config.qmake
+        (start
+            (regex [(CONFIG)\s*(\+|\-)?(=)]
+                (3 punctuation.separator.key-value.qmake)
+                (1 variable.language.qmake)))
+        (end
+            (regex $\n?
+                (3 punctuation.separator.key-value.qmake)
+                (1 variable.language.qmake)))
+        (subzones
+            (zone keyword.other.qmake
+                (match
+                    (regex [\b(release|debug|warn_(on|off)|qt|opengl|thread|x11|windows|console|dll|staticlib|plugin|designer|uic3|no_lflags_merge|exceptions|rtti|stl|flat|app_bundle|no_batch|qtestlib|ppc|x86)\b])))))
+    (zone markup.other.qt.qmake
+        (start
+            (regex [(QT)\s*(\+|\-)?(=)]
+                (3 punctuation.separator.key-value.qmake)
+                (1 variable.language.qmake)))
+        (end
+            (regex $\n?
+                (3 punctuation.separator.key-value.qmake)
+                (1 variable.language.qmake)))
+        (subzones
+            (zone keyword.other.qmake
+                (match
+                    (list core gui network opengl sql svg xml qt3support)
+                    (boundary.both)))))
+    (zone variable.language.qmake
+        (match
+            (regex [\b(R(C(C_DIR|_FILE)|E(S_FILE|QUIRES))|M(OC_DIR|AKE(_MAKEFILE|FILE(_GENERATOR)?))|S(RCMOC|OURCES|UBDIRS)|HEADERS|YACC(SOURCES|IMPLS|OBJECTS)|CONFIG|T(RANSLATIONS|ARGET(_(EXT|\d+(\.\d+\.\d+)?))?)|INCLUDEPATH|OBJ(MOC|ECTS(_DIR)?)|D(SP_TEMPLATE|ISTFILES|E(STDIR(_TARGET)?|PENDPATH|F(_FILE|INES))|LLDESTDIR)|UI(C(IMPLS|OBJECTS)|_(SOURCES_DIR|HEADERS_DIR|DIR))|P(RE(COMPILED_HEADER|_TARGETDEPS)|OST_TARGETDEPS)|V(PATH|ER(SION|_(M(IN|AJ)|PAT)))|Q(MAKE(SPEC|_(RUN_C(XX(_IMP)?|C(_IMP)?)|MOC_SRC|C(XXFLAGS_(RELEASE|MT(_D(BG|LL(DBG)?))?|SHLIB|THREAD|DEBUG|WARN_O(N|FF))|FLAGS_(RELEASE|MT(_D(BG|LL(DBG)?))?|SHLIB|THREAD|DEBUG|WARN_O(N|FF))|LEAN)|TARGET|IN(CDIR(_(X|THREAD|OPENGL|QT))?|FO_PLIST)|UIC|P(RE_LINK|OST_LINK)|EXT(_(MOC|H|CPP|YACC|OBJ|UI|PRL|LEX)|ENSION_SHLIB)|Q(MAKE|T_DLL)|F(ILETAGS|AILED_REQUIREMENTS)|L(N_SHLIB|I(B(S(_(RT(MT)?|X|CONSOLE|THREAD|OPENGL(_QT)?|QT(_(OPENGL|DLL))?|WINDOWS))?|_FLAG|DIR(_(X|OPENGL|QT|FLAGS))?)|NK_SHLIB_CMD)|FLAGS(_(RELEASE|S(H(LIB|APP)|ONAME)|CONSOLE(_DLL)?|THREAD|DEBUG|PLUGIN|QT_DLL|WINDOWS(_DLL)?))?)|A(R_CMD|PP_(OR_DLL|FLAG))))?|T_THREAD)|FORMS|L(IBS|EX(SOURCES|IMPLS|OBJECTS)))\b])))
+    (zone markup.other.assignment.qmake
+        (start
+            (regex [(\b([\w\d_]+\.[\w\d_]+|[A-Z_]+))?\s*(\+|\-)?(=)]
+                (4 punctuation.separator.key-value.qmake)
+                (1 variable.other.qmake)))
+        (end
+            (regex $\n?
+                (4 punctuation.separator.key-value.qmake)
+                (1 variable.other.qmake)))
+        (subzones
+            (zone variable.other.qmake
+                (match
+                    (regex [(\$\$)([A-Z_]+|[\w\d_]+\.[\w\d_]+)|\$\([\w\d_]+\)]
+                        (1 punctuation.definition.variable.qmake))))
+            (zone constant.other.filename.qmake
+                (match
+                    (regex [[\w\d\/_\-\.\:]+])))
+            (zone string.quoted.double.qmake
+                (start
+                    (regex "
+                        (0 punctuation.definition.string.begin.qmake)))
+                (end
+                    (regex "
+                        (0 punctuation.definition.string.end.qmake))))
+            (zone string.interpolated.qmake
+                (start
+                    (regex [`]
+                        (0 punctuation.definition.string.begin.qmake)))
+                (end
+                    (regex [`]
+                        (0 punctuation.definition.string.end.qmake))))
+            (zone markup.other.assignment.continuation.qmake
+                (start
+                    (regex [(\\)]
+                        (1 string.regexp.qmake)))
+                (end
+                    (regex [^[^#]]
+                        (1 string.regexp.qmake)))
+                (subzones
+                    (zone comment.line.number-sign.qmake
+                        (match
+                            (regex [(#).*$\n?]
+                                (1 punctuation.definition.comment.qmake))))))
+            (zone comment.line.number-sign.qmake
+                (match
+                    (regex [(#).*$\n?]
+                        (1 punctuation.definition.comment.qmake))))))
+    (zone
+        (inner-identifier variable.parameter.qmake)
+        (start
+            (regex [\b(basename|CONFIG|contains|count|dirname|error|exists|find|for|include|infile|isEmpty|join|member|message|prompt|quote|sprintf|system|unique|warning)\s*(\()]
+                (1 entity.name.function.qmake)
+                (2 punctuation.definition.parameters.qmake)))
+        (end
+            (regex [(\))]
+                (1 punctuation.definition.parameters.qmake))))
+    (zone keyword.other.scope.qmake
+        (match
+            (list unix win32 mac debug release)
+            (boundary.both)))
+    (zone comment.line.number-sign.qmake
+        (match
+            (regex [(#).*$\n?]
+                (1 punctuation.definition.comment.qmake)))))

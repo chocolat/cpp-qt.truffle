@@ -1,0 +1,14 @@
+(trigger
+    (key [[cmd]U]))
+
+(name [Implementation to Declaration])
+
+(only-in source.c++.qt)
+
+(input selection line)
+
+(output snippet)
+
+(save nothing)
+
+(script [ruby "$TM_BUNDLE_SUPPORT/bin/implementation_to_declaration.rb"])

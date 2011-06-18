@@ -1,0 +1,19 @@
+(trigger
+    (key [[ctrl]H]))
+
+(name [Documentation for Word / Selection])
+
+(only-in source.c++.qt)
+
+(input selection word)
+
+(output html)
+
+(save nothing)
+
+(script [# Similiar to entering query in the Qt Assistant's
+# "Look For:" field, and pressing enter. If 
+# there are multiple matches, there's an option
+# to select one of them.
+
+ruby "$TM_BUNDLE_SUPPORT/bin/search.rb"])

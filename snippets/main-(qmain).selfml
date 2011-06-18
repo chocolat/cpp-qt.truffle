@@ -1,0 +1,15 @@
+(name [main()])
+
+(trigger
+    (tab qmain))
+
+(only-in source.c++.qt)
+
+(snippet [#include <QApplication>
+
+int main (int argc, char *argv[])
+{
+	QApplication app(argc, argv);
+	%{0}
+	return app.exec();
+}])

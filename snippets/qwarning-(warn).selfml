@@ -1,0 +1,8 @@
+(name [qWarning(...)])
+
+(trigger
+    (tab warn))
+
+(only-in source.c++.qt)
+
+(snippet [qWarning("%{1}"%{1/[^%]*(%)?.*/(?1:, :\);)/}%{2}%{1/[^%]*(%)?.*/(?1:\);)/}])
